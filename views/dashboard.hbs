@@ -1,0 +1,44 @@
+<h6>Dashboard</h6>
+<h4>Welcome {{name}} </h4>   
+
+{{#if stories}}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each stories}}
+                <tr>
+                    {{!-- title = stories.title because of #each looping --}}
+                    <td><a href="/stories/{{_id}}">{{title}}</a></td>
+                    {{!-- formatDate(date,format) here in looping dont use () therefore space --}}
+                    {{!-- {{formatDate createdAt 'MMMM Do YYYY , h:mm:ss a'}} as helper formatDate will send createdAt as date and 'MMMM..'  as format to the paramters--}}
+                    <td>{{formatDate createdAt 'MMMM Do YYYY,h:mm:ss a'}}</td>
+                    <td><span class="dash-status">{{status}}</span></td>
+                    <td>
+                        <a href="/stories/edit/{{_id}}" class="btn-float"><i class="fas fa-edit fa-large
+                        "></i></a>
+                        
+                        <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn red trash-btn">
+                                <i class="fas fa-trash "></i>
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+{{else}}
+    <hr>
+    <p>You have not created any stories!!!</p>
+
+{{/if}}

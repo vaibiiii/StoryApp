@@ -1,0 +1,39 @@
+<h1>Stories</h1>
+<div class="row">
+    {{#if stories}}
+        {{#each stories}}
+
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        {{!-- Since user Referes to stories.user and we need logged user which is in request --}}
+                        {{!-- and accessed outside of each loop but it is not accessible here  --}}
+                        {{!-- ../user this means look one level up and then also it will throw error --}}
+                        {{!-- Because we don't have access to it therefore we declare global variable users which it refers to  --}}
+                        {{{editIcon user ../user _id }}}
+
+                    </div>
+                    <div class="card-content center-align">
+                        <h5>{{title}}</h5>
+                        {{!-- hbs helpers  --}}
+                        <p>{{stripTags (truncate body 100)}}</p>
+                        <br>
+                        <div class="chip">
+                            {{!-- stories.user.image = user.image here user table has been referenced --}}
+                            <img src="{{user.image}}" alt="">
+                            <a href="/stories/user/{{user._id}}">{{user.displayName}}</a>
+                        </div>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="/stories/{{_id}}" class="btn grey">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+        {{/each}}
+
+    {{else}}
+        <p>No Public Stories Present Now.</p>
+
+    {{/if}}
+</div>

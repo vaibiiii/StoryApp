@@ -1,0 +1,31 @@
+p{
+    margin: 10px 0 !important;
+}
+.login-container {
+    width : 400px;
+    margin-top: 50px;
+    text-align: center;
+}
+nav li a{
+    font-weight: bold !important;
+}
+nav li .logout{
+    background-color: rgb(252, 125, 125);
+    border-radius: 8%;
+    margin-right: 170px;
+    margin-left: 18px;
+}
+.fa-small{
+    font-size : 17px !important;
+}
+.btn-float{
+    float: left;
+    margin-right: 10px;
+}
+.fa-large{
+    font-size: x-large !important;
+    margin: 5px;
+}
+.img-small{
+    width: 180px;
+}
